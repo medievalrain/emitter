@@ -20,7 +20,7 @@ export const createEmitter = <Events extends EventMap>() => {
 		if (!callbacks?.size) {
 			return;
 		}
-		Array.from(callbacks?.entries()).forEach(([callback, { once }]) => {
+		Array.from(callbacks.entries()).forEach(([callback, { once }]) => {
 			if (!callbacks.has(callback)) {
 				return;
 			}
