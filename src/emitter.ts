@@ -13,6 +13,9 @@ export const createEmitter = <Events extends EventMap>() => {
 			controller.abort();
 		}
 		callbacks.delete(callback);
+		if (!callbacks.size) {
+			callbackMap.delete(eventName);
+		}
 	};
 
 	const emit = <EM extends keyof Events>(eventName: EM, ...args: Parameters<Events[EM]>) => {
