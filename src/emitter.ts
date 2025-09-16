@@ -53,13 +53,7 @@ export const createEmitter = <Events extends EventMap>() => {
 
 		if (options?.signal) {
 			unsubController = new AbortController();
-			options.signal.addEventListener(
-				"abort",
-				() => {
-					off(event, callback);
-				},
-				{ once: true, signal: unsubController.signal }
-			);
+			options.signal.addEventListener("abort", () => off(event, callback), { once: true, signal: unsubController.signal });
 		}
 		callbacks.set(callback, { once: options?.once, controller: unsubController });
 	};
