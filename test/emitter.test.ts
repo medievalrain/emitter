@@ -3,7 +3,6 @@ import { createEmitter } from "@/emitter";
 
 type Events = {
 	a: (x: number) => void;
-	b: (x: string) => void;
 	empty: () => void;
 	mutlipleArgs: (a: string, b: number) => void;
 };
