@@ -1,0 +1,29 @@
+{
+	"name": "@medievalrain/typed-event-emitter",
+	"version": "0.0.0",
+	"private": true,
+	"description": "A typed event emitter",
+	"type": "module",
+	"files": [
+		"dist"
+	],
+	"main": "./dist/index.js",
+	"module": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"exports": {
+		".": "./dist/index.js",
+		"./package.json": "./package.json"
+	},
+	"scripts": {
+		"build": "tsdown",
+		"dev": "tsdown --watch"
+	},
+	"devDependencies": {
+		"@types/node": "24.5.0",
+		"oxlint": "1.15.0",
+		"prettier": "3.6.2",
+		"tsdown": "0.15.1",
+		"typescript": "5.9.2",
+		"vitest": "4.0.0-beta.11"
+	}
+}
