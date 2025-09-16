@@ -1,11 +1,10 @@
 import type { CallbackOptions, EventMap, InternalCallbackData } from "./types";
 
 export const createEmitter = <Events extends EventMap>() => {
-	type EventName = keyof Events;
-	const callbackMap = new Map<EventName, Map<Events[EventName], InternalCallbackData>>();
+	const callbackMap = new Map<keyof Events, Map<Events[keyof Events], InternalCallbackData>>();
 
-	const off = <EM extends EventName>(event: EM, callback: Events[EM]) => {
-		const callbacks = callbackMap.get(event);
+	const off = <EM extends keyof Events>(eventName: EM, callback: Events[EM]) => {
+		const callbacks = callbackMap.get(eventName);
 		if (!callbacks) {
 			return;
 		}
@@ -16,8 +15,8 @@ export const createEmitter = <Events extends EventMap>() => {
 		callbacks.delete(callback);
 	};
 
-	const emit = <EM extends EventName>(event: EM, ...args: Parameters<Events[EM]>) => {
-		const callbacks = callbackMap.get(event);
+	const emit = <EM extends keyof Events>(eventName: EM, ...args: Parameters<Events[EM]>) => {
+		const callbacks = callbackMap.get(eventName);
 		if (!callbacks?.size) {
 			return;
 		}
@@ -29,21 +28,21 @@ export const createEmitter = <Events extends EventMap>() => {
 				callback(...args);
 			} finally {
 				if (once) {
-					off(event, callback);
+					off(eventName, callback);
 				}
 			}
 		});
 	};
 
-	const on = <EM extends EventName>(event: EM, callback: Events[EM], options?: CallbackOptions) => {
+	const on = <EM extends keyof Events>(eventName: EM, callback: Events[EM], options?: CallbackOptions) => {
 		if (options?.signal && options.signal.aborted) {
 			return;
 		}
-		let callbacks = callbackMap.get(event);
+		let callbacks = callbackMap.get(eventName);
 		let unsubController: AbortController | undefined = undefined;
 		if (!callbacks) {
 			callbacks = new Map<Events[EM], InternalCallbackData>();
-			callbackMap.set(event, callbacks);
+			callbackMap.set(eventName, callbacks);
 		} else {
 			const existingCallback = callbacks.get(callback);
 			if (existingCallback) {
@@ -53,7 +52,7 @@ export const createEmitter = <Events extends EventMap>() => {
 
 		if (options?.signal) {
 			unsubController = new AbortController();
-			options.signal.addEventListener("abort", () => off(event, callback), { once: true, signal: unsubController.signal });
+			options.signal.addEventListener("abort", () => off(eventName, callback), { once: true, signal: unsubController.signal });
 		}
 		callbacks.set(callback, { once: options?.once, controller: unsubController });
 	};
