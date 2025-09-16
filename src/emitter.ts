@@ -1,9 +1,4 @@
-export type EventMap = Record<string, (...args: any[]) => void>;
-
-export type CallbackOptions = {
-	once?: boolean;
-	signal?: AbortSignal;
-};
+import type { CallbackOptions, EventMap } from "./types";
 
 export const createEmitter = <Events extends EventMap>() => {
 	type EventName = keyof Events;
