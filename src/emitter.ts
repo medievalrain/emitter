@@ -22,14 +22,23 @@ export const createEmitter = <Events extends EventMap>() => {
 			return;
 		}
 		Array.from(callbacks?.entries()).forEach(([callback, { once }]) => {
-			callback(...args);
-			if (once) {
-				off(event, callback);
+			if (!callbacks.has(callback)) {
+				return;
+			}
+			try {
+				callback(...args);
+			} finally {
+				if (once) {
+					off(event, callback);
+				}
 			}
 		});
 	};
 
 	const on = <EM extends EventName>(event: EM, callback: Events[EM], options?: CallbackOptions) => {
+		if (options?.signal && options.signal.aborted) {
+			return;
+		}
 		let callbacks = callbackMap.get(event);
 		let unsubController: AbortController | undefined = undefined;
 		if (!callbacks) {
@@ -42,7 +51,7 @@ export const createEmitter = <Events extends EventMap>() => {
 			}
 		}
 
-		if (options?.signal && !options.signal.aborted) {
+		if (options?.signal) {
 			unsubController = new AbortController();
 			options.signal.addEventListener(
 				"abort",
