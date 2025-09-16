@@ -35,7 +35,13 @@ export const createEmitter = <Events extends EventMap>() => {
 		if (!callbacks) {
 			callbacks = new Map<Events[EM], { once?: boolean; controller?: AbortController }>();
 			callbackMap.set(event, callbacks);
+		} else {
+			const existingCallback = callbacks.get(callback);
+			if (existingCallback) {
+				return;
+			}
 		}
+
 		if (options?.signal && !options.signal.aborted) {
 			unsubController = new AbortController();
 			options.signal.addEventListener(
