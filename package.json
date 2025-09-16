@@ -3,6 +3,11 @@
 	"version": "0.1.2",
 	"description": "A typesafe event emitter",
 	"type": "module",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/medievalrain/emitter.git"
+	},
+	"license": "MIT",
 	"files": [
 		"dist"
 	],
@@ -25,9 +30,5 @@
 		"tsdown": "0.15.1",
 		"typescript": "5.9.2",
 		"vitest": "4.0.0-beta.11"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/medievalrain/emitter.git"
 	}
 }
