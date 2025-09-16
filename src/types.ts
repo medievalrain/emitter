@@ -4,3 +4,5 @@ export type CallbackOptions = {
 	once?: boolean;
 	signal?: AbortSignal;
 };
+
+export type InternalCallbackData = { once?: boolean; controller?: AbortController };

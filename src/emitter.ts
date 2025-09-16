@@ -1,8 +1,8 @@
-import type { CallbackOptions, EventMap } from "./types";
+import type { CallbackOptions, EventMap, InternalCallbackData } from "./types";
 
 export const createEmitter = <Events extends EventMap>() => {
 	type EventName = keyof Events;
-	const callbackMap = new Map<EventName, Map<Events[EventName], { once?: boolean; controller?: AbortController }>>();
+	const callbackMap = new Map<EventName, Map<Events[EventName], InternalCallbackData>>();
 
 	const off = <EM extends EventName>(event: EM, callback: Events[EM]) => {
 		const callbacks = callbackMap.get(event);
@@ -42,7 +42,7 @@ export const createEmitter = <Events extends EventMap>() => {
 		let callbacks = callbackMap.get(event);
 		let unsubController: AbortController | undefined = undefined;
 		if (!callbacks) {
-			callbacks = new Map<Events[EM], { once?: boolean; controller?: AbortController }>();
+			callbacks = new Map<Events[EM], InternalCallbackData>();
 			callbackMap.set(event, callbacks);
 		} else {
 			const existingCallback = callbacks.get(callback);
