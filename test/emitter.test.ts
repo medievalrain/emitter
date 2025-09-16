@@ -5,6 +5,7 @@ type Events = {
 	a: (x: number) => void;
 	empty: () => void;
 	mutlipleArgs: (a: string, b: number) => void;
+	322: () => void;
 };
 
 let emitter = createEmitter<Events>();
@@ -130,5 +131,19 @@ describe("Emitter tests", () => {
 		emitter.emit("empty");
 		expect(first).toHaveBeenCalledOnce();
 		expect(later).not.toHaveBeenCalled();
+	});
+
+	test("Allows numbers as event names", () => {
+		const fn = vi.fn();
+		emitter.on(322, fn);
+		emitter.emit(322);
+		expect(fn).toHaveBeenCalledOnce();
+	});
+
+	test("Allows symbols as event names", () => {
+		const fn = vi.fn();
+		emitter.on(322, fn);
+		emitter.emit(322);
+		expect(fn).toHaveBeenCalledOnce();
 	});
 });
