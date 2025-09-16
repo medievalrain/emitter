@@ -139,11 +139,4 @@ describe("Emitter tests", () => {
 		emitter.emit(322);
 		expect(fn).toHaveBeenCalledOnce();
 	});
-
-	test("Allows symbols as event names", () => {
-		const fn = vi.fn();
-		emitter.on(322, fn);
-		emitter.emit(322);
-		expect(fn).toHaveBeenCalledOnce();
-	});
 });
