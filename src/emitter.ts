@@ -27,7 +27,7 @@ export const createEmitter = <Events extends EventMap>() => {
 
 	const on = <EM extends EventName>(event: EM, callback: Events[EM], options?: CallbackOptions) => {
 		let callbacks = callbackMap.get(event);
-		if (!callbacks?.size) {
+		if (!callbacks) {
 			callbacks = new Map<Events[EM], boolean | undefined>();
 			callbackMap.set(event, callbacks);
 		}
