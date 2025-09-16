@@ -1,5 +1,5 @@
 {
-	"name": "@medievalrain/typed-event-emitter",
+	"name": "@medievalrain/emitter",
 	"version": "0.1.0",
 	"private": true,
 	"description": "A typed event emitter",
@@ -16,7 +16,8 @@
 	},
 	"scripts": {
 		"build": "tsdown",
-		"dev": "tsdown --watch"
+		"dev": "tsdown --watch",
+		"test": "vitest"
 	},
 	"devDependencies": {
 		"@types/node": "24.5.0",
