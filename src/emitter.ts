@@ -31,7 +31,7 @@ export const createEmitter = <Events extends EventMap>() => {
 			callbacks = new Map<Events[EM], boolean | undefined>();
 			callbackMap.set(event, callbacks);
 		}
-		if (options?.signal) {
+		if (options?.signal && !options.signal.aborted) {
 			options.signal.addEventListener(
 				"abort",
 				() => {
