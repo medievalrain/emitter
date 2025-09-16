@@ -1,8 +1,7 @@
 {
 	"name": "@medievalrain/emitter",
 	"version": "0.1.0",
-	"private": true,
-	"description": "A typed event emitter",
+	"description": "A typesafe event emitter",
 	"type": "module",
 	"files": [
 		"dist"
