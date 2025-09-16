@@ -1,4 +1,4 @@
-export type EventMap = Record<string, (...args: any[]) => void>;
+export type EventMap = Record<string | number, (...args: any[]) => void>;
 
 export type CallbackOptions = {
 	once?: boolean;
