@@ -42,7 +42,7 @@ export const createEmitter = <Events extends EventMap>(): Emitter<Events> => {
 			return;
 		}
 		let callbacks = callbackMap.get(eventName);
-		let unsubController: AbortController | undefined = undefined;
+		let unsubController: AbortController | undefined;
 		if (!callbacks) {
 			callbacks = new Map<Events[EM], InternalCallbackData>();
 			callbackMap.set(eventName, callbacks);
