@@ -16,6 +16,7 @@
 		"noUncheckedSideEffectImports": true,
 		"noUncheckedIndexedAccess": true,
 		"moduleDetection": "force",
-		"verbatimModuleSyntax": true
+		"verbatimModuleSyntax": true,
+		"skipLibCheck": true
 	}
 }
