@@ -21,7 +21,8 @@
 	"scripts": {
 		"build": "tsdown",
 		"dev": "tsdown --watch",
-		"test": "vitest"
+		"test": "vitest",
+		"lint": "oxlint"
 	},
 	"devDependencies": {
 		"oxlint": "1.17.0",
