@@ -6,7 +6,7 @@
 
 A typesafe event emitter for NodeJS and browser.
 
-## Instalation
+## Installation
 
 ```bash
 npm install @medievalrain/emitter
