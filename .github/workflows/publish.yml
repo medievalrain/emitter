@@ -71,7 +71,7 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm typecheck
 
-  publish:
+  publish-npm:
     runs-on: ubuntu-latest
     needs: [test, lint, format, typecheck]
     steps:
@@ -94,7 +94,7 @@ jobs:
 
   publish-jsr:
     runs-on: ubuntu-latest
-    needs: [test, lint, format, typecheck]
+    needs: [publish-npm]
     steps:
       - uses: actions/checkout@v4
       - uses: denoland/setup-deno@v2
