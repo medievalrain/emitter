@@ -1,4 +1,4 @@
-import type { CallbackOptions, Emitter, EventMap, InternalCallbackData } from "./types";
+import type { CallbackOptions, Emitter, EventMap, InternalCallbackData } from "./types.ts";
 
 export const createEmitter = <Events extends EventMap>(): Emitter<Events> => {
 	const callbackMap = new Map<keyof Events, Map<Events[keyof Events], InternalCallbackData>>();

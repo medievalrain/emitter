@@ -18,7 +18,9 @@
 		"noUncheckedIndexedAccess": true,
 		"moduleDetection": "force",
 		"verbatimModuleSyntax": true,
-		"skipLibCheck": true
+		"skipLibCheck": true,
+		"allowImportingTsExtensions": true,
+		"noEmit": true
 	},
 	"include": ["./src", "./test"]
 }
