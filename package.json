@@ -1,6 +1,6 @@
 {
 	"name": "@medievalrain/emitter",
-	"version": "0.2.8",
+	"version": "0.2.9",
 	"description": "A typesafe event emitter",
 	"type": "module",
 	"repository": {
