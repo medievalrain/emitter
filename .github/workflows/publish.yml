@@ -54,7 +54,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm prettier --check .
+      - run: pnpm format
 
   build:
     runs-on: ubuntu-latest
