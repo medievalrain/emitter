@@ -1,9 +1,9 @@
-import type { CallbackOptions, EventMap, InternalCallbackData } from "./types";
+import type { CallbackOptions, Emitter, EventMap, InternalCallbackData } from "./types";
 
-export const createEmitter = <Events extends EventMap>() => {
+export const createEmitter = <Events extends EventMap>(): Emitter<Events> => {
 	const callbackMap = new Map<keyof Events, Map<Events[keyof Events], InternalCallbackData>>();
 
-	const off = <EM extends keyof Events>(eventName: EM, callback: Events[EM]) => {
+	const off = <EM extends keyof Events>(eventName: EM, callback: Events[EM]): void => {
 		const callbacks = callbackMap.get(eventName);
 		if (!callbacks) {
 			return;
@@ -18,7 +18,7 @@ export const createEmitter = <Events extends EventMap>() => {
 		}
 	};
 
-	const emit = <EM extends keyof Events>(eventName: EM, ...args: Parameters<Events[EM]>) => {
+	const emit = <EM extends keyof Events>(eventName: EM, ...args: Parameters<Events[EM]>): void => {
 		const callbacks = callbackMap.get(eventName);
 		if (!callbacks?.size) {
 			return;
@@ -37,7 +37,7 @@ export const createEmitter = <Events extends EventMap>() => {
 		});
 	};
 
-	const on = <EM extends keyof Events>(eventName: EM, callback: Events[EM], options?: CallbackOptions) => {
+	const on = <EM extends keyof Events>(eventName: EM, callback: Events[EM], options?: CallbackOptions): void => {
 		if (options?.signal && options.signal.aborted) {
 			return;
 		}
