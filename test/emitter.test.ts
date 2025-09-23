@@ -1,11 +1,14 @@
 import { describe, expect, vi, test, beforeEach } from "vitest";
 import { createEmitter } from "@/emitter";
 
+const SYMBOL_EVENT: unique symbol = Symbol("symbolEvent");
+
 type Events = {
 	a: (x: number) => void;
 	empty: () => void;
 	mutlipleArgs: (a: string, b: number) => void;
 	322: () => void;
+	[SYMBOL_EVENT]: () => void;
 };
 
 let emitter = createEmitter<Events>();
@@ -137,6 +140,13 @@ describe("Emitter tests", () => {
 		const fn = vi.fn();
 		emitter.on(322, fn);
 		emitter.emit(322);
+		expect(fn).toHaveBeenCalledOnce();
+	});
+
+	test("Allows symbols as event names", () => {
+		const fn = vi.fn();
+		emitter.on(SYMBOL_EVENT, fn);
+		emitter.emit(SYMBOL_EVENT);
 		expect(fn).toHaveBeenCalledOnce();
 	});
 });
