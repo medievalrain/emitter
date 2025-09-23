@@ -5,3 +5,9 @@
 ![NPM Version](https://img.shields.io/npm/v/%40medievalrain%2Femitter)
 
 A typesafe event emitter for NodeJS and browser.
+
+## Instalation
+
+```bash
+npm install @medievalrain/emitter
+```
