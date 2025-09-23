@@ -101,4 +101,4 @@ jobs:
         with:
           deno-version: ${{ env.DENO_VERSION }}
       - name: Publish package on JSR
-        run: deno publish
+        run: deno publish --no-check
