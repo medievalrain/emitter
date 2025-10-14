@@ -27,11 +27,11 @@
 		"typecheck": "tsc"
 	},
 	"devDependencies": {
-		"oxlint": "1.17.0",
+		"oxlint": "1.23.0",
 		"prettier": "3.6.2",
-		"tsdown": "0.15.4",
-		"typescript": "5.9.2",
-		"vitest": "4.0.0-beta.11"
+		"tsdown": "0.15.7",
+		"typescript": "5.9.3",
+		"vitest": "4.0.0-beta.17"
 	},
 	"publishConfig": {
 		"access": "public",
