@@ -86,6 +86,9 @@ export const createEmitter = <Events extends EventMap>(): Emitter<Events> => {
 	};
 
 	const onAny = (callback: OnAnyCallback<Events>, options?: CallbackOptions): void => {
+		if (options?.signal && options.signal.aborted) {
+			return;
+		}
 		const existingCallback = onAnyCallbacks.get(callback);
 		if (existingCallback) {
 			return;
