@@ -8,10 +8,7 @@ export const createEmitter = <Events extends EventMap>(): Emitter<Events> => {
 		if (!callbacks) {
 			return;
 		}
-		const controller = callbacks.get(callback)?.controller;
-		if (controller) {
-			controller.abort();
-		}
+		callbacks.get(callback)?.controller?.abort();
 		callbacks.delete(callback);
 		if (!callbacks.size) {
 			callbackMap.delete(eventName);
