@@ -149,4 +149,24 @@ describe("Emitter tests", () => {
 		emitter.emit(SYMBOL_EVENT);
 		expect(fn).toHaveBeenCalledOnce();
 	});
+
+	test("On any catches all events", () => {
+		const fn = vi.fn();
+		emitter.on(SYMBOL_EVENT, () => {});
+		emitter.on("empty", () => {});
+		emitter.onAny(fn);
+		emitter.emit(SYMBOL_EVENT);
+		emitter.emit("empty");
+		expect(fn).toHaveBeenCalledTimes(2);
+	});
+
+	test("Does not call onAny listener after unsubscribing via offAny()", () => {
+		const fn = vi.fn();
+		emitter.onAny(fn);
+		emitter.on(SYMBOL_EVENT, () => {});
+		emitter.on("empty", () => {});
+		emitter.offAny(fn);
+		emitter.emit(SYMBOL_EVENT);
+		expect(fn).toHaveBeenCalledTimes(0);
+	});
 });
