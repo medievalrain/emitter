@@ -1,6 +1,6 @@
 {
 	"name": "@medievalrain/emitter",
-	"version": "0.2.21",
+	"version": "0.4.0",
 	"description": "A typesafe event emitter",
 	"type": "module",
 	"repository": {
@@ -31,7 +31,7 @@
 		"prettier": "3.6.2",
 		"tsdown": "0.15.10",
 		"typescript": "5.9.3",
-		"vitest": "4.0.3"
+		"vitest": "4.0.4"
 	},
 	"packageManager": "pnpm@10.19.0",
 	"publishConfig": {

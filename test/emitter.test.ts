@@ -4,11 +4,10 @@ import { createEmitter } from "@/emitter";
 const SYMBOL_EVENT: unique symbol = Symbol("symbolEvent");
 
 type Events = {
-	a: (x: number) => void;
-	empty: () => void;
-	mutlipleArgs: (a: string, b: number) => void;
-	322: () => void;
-	[SYMBOL_EVENT]: () => void;
+	a: number;
+	empty: undefined;
+	322: void;
+	[SYMBOL_EVENT]: undefined;
 };
 
 let emitter = createEmitter<Events>();
@@ -107,13 +106,6 @@ describe("Emitter tests", () => {
 		expect(fn).toHaveBeenCalledTimes(3);
 	});
 
-	test("Forwards multiple arguments", () => {
-		const fn = vi.fn();
-		emitter.on("mutlipleArgs", fn);
-		emitter.emit("mutlipleArgs", "a string", 322);
-		expect(fn).toHaveBeenCalledExactlyOnceWith("a string", 322);
-	});
-
 	test("off() on unknown listener does nothing", () => {
 		const fn = vi.fn();
 		expect(() => emitter.off("empty", fn)).not.toThrow();
@@ -148,5 +140,24 @@ describe("Emitter tests", () => {
 		emitter.on(SYMBOL_EVENT, fn);
 		emitter.emit(SYMBOL_EVENT);
 		expect(fn).toHaveBeenCalledOnce();
+	});
+
+	test("On any catches all events", () => {
+		const fn = vi.fn();
+		emitter.on(SYMBOL_EVENT, () => {});
+		emitter.on("empty", () => {});
+		emitter.onAny(fn);
+		emitter.emit(SYMBOL_EVENT);
+		expect(fn).toHaveBeenCalledOnce();
+	});
+
+	test("Does not call onAny listener after unsubscribing via offAny()", () => {
+		const fn = vi.fn();
+		emitter.onAny(fn);
+		emitter.on(SYMBOL_EVENT, () => {});
+		emitter.on("empty", () => {});
+		emitter.offAny(fn);
+		emitter.emit(SYMBOL_EVENT);
+		expect(fn).toHaveBeenCalledTimes(0);
 	});
 });
