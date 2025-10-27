@@ -4,11 +4,10 @@ import { createEmitter } from "@/emitter";
 const SYMBOL_EVENT: unique symbol = Symbol("symbolEvent");
 
 type Events = {
-	a: (x: number) => void;
-	empty: () => void;
-	mutlipleArgs: (a: string, b: number) => void;
-	322: () => void;
-	[SYMBOL_EVENT]: () => void;
+	a: number;
+	empty: undefined;
+	322: void;
+	[SYMBOL_EVENT]: undefined;
 };
 
 let emitter = createEmitter<Events>();
@@ -105,13 +104,6 @@ describe("Emitter tests", () => {
 		emitter.emit("empty");
 
 		expect(fn).toHaveBeenCalledTimes(3);
-	});
-
-	test("Forwards multiple arguments", () => {
-		const fn = vi.fn();
-		emitter.on("mutlipleArgs", fn);
-		emitter.emit("mutlipleArgs", "a string", 322);
-		expect(fn).toHaveBeenCalledExactlyOnceWith("a string", 322);
 	});
 
 	test("off() on unknown listener does nothing", () => {
