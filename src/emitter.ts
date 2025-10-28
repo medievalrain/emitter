@@ -1,23 +1,32 @@
-import type { CallbackOptions, Emitter, EventMap, InternalCallbackData, OnAnyCallback } from "./types.ts";
+import type {
+	Callback,
+	CallbackMap,
+	CallbackOptions,
+	Emit,
+	Emitter,
+	EventMap,
+	InternalCallbackData,
+	OnAnyCallback,
+} from "./types.ts";
 
 export const createEmitter = <Events extends EventMap>(): Emitter<Events> => {
-	const callbackMap = new Map<keyof Events, Map<Events[keyof Events], InternalCallbackData>>();
+	const callbackMap: CallbackMap<Events> = {};
 	const onAnyCallbacks = new Map<OnAnyCallback<Events>, InternalCallbackData | undefined>();
 
-	const off = <EM extends keyof Events>(eventName: EM, callback: Events[EM]): void => {
-		const callbacks = callbackMap.get(eventName);
+	const off = <EM extends keyof Events>(eventName: EM, callback: Callback<Events, EM>): void => {
+		const callbacks = callbackMap[eventName];
 		if (!callbacks) {
 			return;
 		}
 		callbacks.get(callback)?.controller?.abort();
 		callbacks.delete(callback);
 		if (!callbacks.size) {
-			callbackMap.delete(eventName);
+			delete callbackMap[eventName];
 		}
 	};
 
-	const emit = <EM extends keyof Events>(eventName: EM, ...args: Parameters<Events[EM]>): void => {
-		const callbacks = callbackMap.get(eventName);
+	const emit: Emit<Events> = (...[eventName, callbackArgs]): void => {
+		const callbacks = callbackMap[eventName];
 		if (!callbacks?.size) {
 			return;
 		}
@@ -25,8 +34,9 @@ export const createEmitter = <Events extends EventMap>(): Emitter<Events> => {
 			if (!callbacks.has(callback)) {
 				return;
 			}
+
 			try {
-				callback(...args);
+				callback(callbackArgs as any); // @TODO get rid of type assertion
 			} finally {
 				if (once) {
 					off(eventName, callback);
@@ -39,7 +49,7 @@ export const createEmitter = <Events extends EventMap>(): Emitter<Events> => {
 				return;
 			}
 			try {
-				callback(args as unknown as Events[keyof Events]);
+				callback(callbackArgs as any); // @TODO get rid of type assertion
 			} finally {
 				if (options?.once) {
 					offAny(callback);
@@ -48,15 +58,15 @@ export const createEmitter = <Events extends EventMap>(): Emitter<Events> => {
 		});
 	};
 
-	const on = <EM extends keyof Events>(eventName: EM, callback: Events[EM], options?: CallbackOptions): void => {
+	const on = <EM extends keyof Events>(eventName: EM, callback: Callback<Events, EM>, options?: CallbackOptions): void => {
 		if (options?.signal && options.signal.aborted) {
 			return;
 		}
-		let callbacks = callbackMap.get(eventName);
+		let callbacks = callbackMap[eventName];
 		let unsubController: AbortController | undefined;
 		if (!callbacks) {
-			callbacks = new Map<Events[EM], InternalCallbackData>();
-			callbackMap.set(eventName, callbacks);
+			callbacks = new Map<Callback<Events, EM>, InternalCallbackData>();
+			callbackMap[eventName] = callbacks;
 		} else {
 			const existingCallback = callbacks.get(callback);
 			if (existingCallback) {
