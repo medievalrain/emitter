@@ -1,6 +1,6 @@
 {
 	"name": "@medievalrain/emitter",
-	"version": "0.8.4",
+	"version": "0.8.5",
 	"description": "A typesafe event emitter",
 	"type": "module",
 	"repository": {
@@ -27,13 +27,13 @@
 		"typecheck": "tsc"
 	},
 	"devDependencies": {
-		"oxlint": "1.28.0",
+		"oxlint": "1.29.0",
 		"prettier": "3.6.2",
-		"tsdown": "0.16.3",
+		"tsdown": "0.16.6",
 		"typescript": "5.9.3",
-		"vitest": "4.0.8"
+		"vitest": "4.0.13"
 	},
-	"packageManager": "pnpm@10.22.0",
+	"packageManager": "pnpm@10.23.0",
 	"publishConfig": {
 		"access": "public",
 		"provenance": true
