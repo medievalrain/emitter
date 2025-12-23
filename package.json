@@ -27,13 +27,13 @@
 		"typecheck": "tsc"
 	},
 	"devDependencies": {
-		"oxlint": "1.33.0",
+		"oxlint": "1.35.0",
 		"prettier": "3.7.4",
-		"tsdown": "0.18.0",
+		"tsdown": "0.18.2",
 		"typescript": "5.9.3",
-		"vitest": "4.0.15"
+		"vitest": "4.0.16"
 	},
-	"packageManager": "pnpm@10.26.0",
+	"packageManager": "pnpm@10.26.1",
 	"publishConfig": {
 		"access": "public",
 		"provenance": true
