@@ -1,41 +1,41 @@
 {
-	"name": "@medievalrain/emitter",
-	"version": "0.8.9",
-	"description": "A typesafe event emitter",
-	"type": "module",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/medievalrain/emitter.git"
-	},
-	"license": "MIT",
-	"files": [
-		"dist"
-	],
-	"main": "./dist/index.js",
-	"module": "./dist/index.js",
-	"types": "./dist/index.d.ts",
-	"exports": {
-		".": "./dist/index.js",
-		"./package.json": "./package.json"
-	},
-	"scripts": {
-		"build": "tsdown",
-		"dev": "tsdown --watch",
-		"test": "vitest",
-		"lint": "oxlint",
-		"format": "prettier --check .",
-		"typecheck": "tsc"
-	},
-	"devDependencies": {
-		"oxlint": "1.35.0",
-		"prettier": "3.7.4",
-		"tsdown": "0.18.2",
-		"typescript": "5.9.3",
-		"vitest": "4.0.16"
-	},
-	"packageManager": "pnpm@10.26.1",
-	"publishConfig": {
-		"access": "public",
-		"provenance": true
-	}
+  "name": "@medievalrain/emitter",
+  "version": "0.8.9",
+  "description": "A typesafe event emitter",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/medievalrain/emitter.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "test": "vitest",
+    "lint": "oxlint",
+    "format": "oxfmt --check .",
+    "typecheck": "tsc"
+  },
+  "devDependencies": {
+    "oxfmt": "0.20.0",
+    "oxlint": "1.35.0",
+    "tsdown": "0.18.2",
+    "typescript": "5.9.3",
+    "vitest": "4.0.16"
+  },
+  "packageManager": "pnpm@10.26.1"
 }

@@ -1,26 +1,26 @@
 {
-	"compilerOptions": {
-		"target": "ESNext",
-		"module": "esnext",
-		"moduleResolution": "bundler",
-		"outDir": "./dist",
-		"paths": {
-			"@/*": ["./src/*"]
-		},
-		"isolatedDeclarations": true,
-		"declaration": true,
-		"isolatedModules": true,
-		"strict": true,
-		"noUnusedLocals": true,
-		"noUnusedParameters": true,
-		"noFallthroughCasesInSwitch": true,
-		"noUncheckedSideEffectImports": true,
-		"noUncheckedIndexedAccess": true,
-		"moduleDetection": "force",
-		"verbatimModuleSyntax": true,
-		"skipLibCheck": true,
-		"allowImportingTsExtensions": true,
-		"noEmit": true
-	},
-	"include": ["./src", "./test"]
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "outDir": "./dist",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "isolatedDeclarations": true,
+    "declaration": true,
+    "isolatedModules": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true,
+    "noUncheckedIndexedAccess": true,
+    "moduleDetection": "force",
+    "verbatimModuleSyntax": true,
+    "skipLibCheck": true,
+    "allowImportingTsExtensions": true,
+    "noEmit": true
+  },
+  "include": ["./src", "./test"]
 }
