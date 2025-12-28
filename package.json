@@ -1,6 +1,6 @@
 {
   "name": "@medievalrain/emitter",
-  "version": "0.8.10",
+  "version": "0.8.11",
   "description": "A typesafe event emitter",
   "license": "MIT",
   "repository": {
