@@ -26,7 +26,7 @@
     "build": "tsdown",
     "dev": "tsdown --watch",
     "test": "vitest",
-    "lint": "oxlint",
+    "lint": "oxlint --type-aware",
     "format": "oxfmt --check .",
     "typecheck": "tsgo"
   },
@@ -34,6 +34,7 @@
     "@typescript/native-preview": "7.0.0-dev.20251228.1",
     "oxfmt": "0.20.0",
     "oxlint": "1.35.0",
+    "oxlint-tsgolint": "0.10.0",
     "tsdown": "0.18.2",
     "vitest": "4.0.16"
   },
