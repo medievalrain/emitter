@@ -5,5 +5,5 @@
     "import/consistent-type-specifier-style": "error",
     "vitest/valid-describe-callback": "off"
   },
-  "ignorePatterns": [ "dist"]
+  "ignorePatterns": ["dist"]
 }
