@@ -28,13 +28,13 @@
     "test": "vitest",
     "lint": "oxlint",
     "format": "oxfmt --check .",
-    "typecheck": "tsc"
+    "typecheck": "tsgo"
   },
   "devDependencies": {
+    "@typescript/native-preview": "7.0.0-dev.20251228.1",
     "oxfmt": "0.20.0",
     "oxlint": "1.35.0",
     "tsdown": "0.18.2",
-    "typescript": "5.9.3",
     "vitest": "4.0.16"
   },
   "packageManager": "pnpm@10.26.1"
