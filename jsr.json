@@ -1,6 +1,0 @@
-{
-  "name": "@medievalrain/emitter",
-  "version": "0.8.18",
-  "license": "MIT",
-  "exports": "./src/index.ts"
-}
