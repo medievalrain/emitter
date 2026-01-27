@@ -1,0 +1,11 @@
+{
+  "extends": ["config:recommended", ":automergeMajor"],
+  "baseBranches": ["master"],
+  "rangeStrategy": "replace",
+  "timezone": "Europe/Amsterdam",
+  "schedule": ["every day before 03:00"],
+  "groupName": "daily dependency update",
+  "separateMajorMinor": false,
+  "separateMultipleMajor": false,
+  "separateMinorPatch": false
+}
