@@ -28,6 +28,7 @@
     "test": "vitest",
     "lint": "oxlint --type-aware",
     "format": "oxfmt --check .",
+    "format:fix": "oxfmt --write .",
     "typecheck": "tsgo"
   },
   "devDependencies": {
