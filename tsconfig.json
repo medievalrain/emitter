@@ -4,9 +4,6 @@
     "module": "esnext",
     "moduleResolution": "bundler",
     "outDir": "./dist",
-    "paths": {
-      "@/*": ["./src/*"]
-    },
     "isolatedDeclarations": true,
     "declaration": true,
     "isolatedModules": true,
@@ -20,6 +17,7 @@
     "verbatimModuleSyntax": true,
     "skipLibCheck": true,
     "allowImportingTsExtensions": true,
+    "erasableSyntaxOnly": true,
     "noEmit": true
   },
   "include": ["./src", "./test"]

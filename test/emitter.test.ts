@@ -1,5 +1,5 @@
 import { describe, expect, vi, test, beforeEach } from "vitest";
-import { createEmitter } from "@/emitter";
+import { createEmitter } from "../src";
 
 const SYMBOL_EVENT: unique symbol = Symbol("symbolEvent");
 
