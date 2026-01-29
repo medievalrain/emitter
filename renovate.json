@@ -1,6 +1,6 @@
 {
   "extends": ["config:recommended", ":automergeMajor"],
-  "baseBranches": ["master"],
+  "baseBranchPatterns": ["master"],
   "rangeStrategy": "replace",
   "timezone": "Europe/Amsterdam",
   "schedule": ["before 3am"],
