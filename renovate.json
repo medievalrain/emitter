@@ -1,9 +1,16 @@
 {
-  "extends": ["config:recommended", ":automergeMajor"],
-  "baseBranches": ["master"],
+  "extends": [
+    "config:recommended",
+    ":automergeMajor"
+  ],
+  "baseBranchPatterns": [
+    "master"
+  ],
   "rangeStrategy": "replace",
   "timezone": "Europe/Amsterdam",
-  "schedule": ["before 3am"],
+  "schedule": [
+    "before 3am"
+  ],
   "groupName": "daily dependency update",
   "separateMajorMinor": false,
   "separateMultipleMajor": false,
