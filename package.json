@@ -32,10 +32,10 @@
     "typecheck": "tsgo"
   },
   "devDependencies": {
-    "@typescript/native-preview": "7.0.0-dev.20260129.1",
+    "@typescript/native-preview": "7.0.0-dev.20260130.1",
     "oxfmt": "0.27.0",
     "oxlint": "1.42.0",
-    "oxlint-tsgolint": "0.11.3",
+    "oxlint-tsgolint": "0.11.4",
     "tsdown": "0.20.1",
     "vitest": "4.0.18"
   },
