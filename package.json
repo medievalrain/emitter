@@ -33,8 +33,8 @@
   },
   "devDependencies": {
     "@typescript/native-preview": "7.0.0-dev.20260203.1",
-    "oxfmt": "0.27.0",
-    "oxlint": "1.42.0",
+    "oxfmt": "0.28.0",
+    "oxlint": "1.43.0",
     "oxlint-tsgolint": "0.11.4",
     "tsdown": "0.20.1",
     "vitest": "4.0.18"
