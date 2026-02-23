@@ -1,6 +1,6 @@
 {
   "name": "@medievalrain/emitter",
-  "version": "0.8.21",
+  "version": "0.8.22",
   "description": "A typesafe event emitter",
   "license": "MIT",
   "repository": {
@@ -32,9 +32,9 @@
     "typecheck": "tsgo"
   },
   "devDependencies": {
-    "@typescript/native-preview": "7.0.0-dev.20260222.1",
-    "oxfmt": "0.34.0",
-    "oxlint": "1.49.0",
+    "@typescript/native-preview": "7.0.0-dev.20260223.1",
+    "oxfmt": "0.35.0",
+    "oxlint": "1.50.0",
     "oxlint-tsgolint": "0.14.2",
     "tsdown": "0.20.3",
     "vitest": "4.0.18"
