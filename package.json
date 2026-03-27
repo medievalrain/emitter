@@ -37,7 +37,7 @@
     "oxlint": "1.57.0",
     "oxlint-tsgolint": "0.17.4",
     "tsdown": "0.21.5",
-    "vitest": "4.1.1"
+    "vitest": "4.1.2"
   },
   "packageManager": "pnpm@10.33.0"
 }
